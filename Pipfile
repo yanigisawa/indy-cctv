@@ -6,8 +6,11 @@ name = "pypi"
 [packages]
 requests = "*"
 numpy = "*"
+pillow = "*"
+matplotlib = "*"
 
 [dev-packages]
+jupyter = "*"
 
 [requires]
 python_version = "3.7"

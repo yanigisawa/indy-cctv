@@ -1,0 +1,62 @@
+<html>
+<body>
+
+    <div id="content"></div>
+
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+
+        function add_cameras() {
+            var cameras = [
+                "http://pws.trafficwise.org/pullover/172_7_97_23.jpg",
+                "http://pws.trafficwise.org/pullover/172_7_97_20.jpg",
+                "http://pws.trafficwise.org/pullover/172_7_97_18.jpg",
+                "http://pws.trafficwise.org/pullover/172_7_97_15.jpg",
+                "http://pws.trafficwise.org/pullover/172_20_31_253.jpg",
+                "http://pws.trafficwise.org/pullover/172_20_31_132.jpg",
+                "http://pws.trafficwise.org/pullover/172_20_31_133.jpg",
+                "http://pws.trafficwise.org/pullover/172_20_31_136.jpg",
+                "http://pws.trafficwise.org/pullover/172_20_31_34.jpg",
+                "http://pws.trafficwise.org/pullover/172_21_21_54.jpg",
+                "http://pws.trafficwise.org/pullover/172_21_21_58.jpg",
+                "http://pws.trafficwise.org/pullover/172_20_21_254.jpg",
+                "http://pws.trafficwise.org/pullover/172_20_21_253.jpg",
+                "http://pws.trafficwise.org/pullover/172_20_21_22.jpg",
+                "http://pws.trafficwise.org/pullover/172_21_21_77.jpg",
+                "http://pws.trafficwise.org/pullover/172_21_21_89.jpg",
+                "http://pws.trafficwise.org/pullover/172_20_21_9.jpg",
+                "http://pws.trafficwise.org/pullover/172_20_21_27.jpg",
+                "http://pws.trafficwise.org/pullover/172_20_21_50.jpg",
+                "http://pws.trafficwise.org/pullover/172_20_21_55.jpg"
+            ];
+            var content = $("#content");
+            for (var i = 0; i < cameras.length; i++) {
+                var qs = new Date().getTime();
+                content.append("<img class='cameras' src='" + cameras[i] + "?q=" + qs + "'>");
+            }
+        }
+
+        function remove_cameras(cb) {
+            var content = $("#content");
+            $('.cameras').remove();
+            if (cb !== null) {
+                cb();
+            }
+        }
+
+        $(function() {
+            add_cameras();
+
+            var refresh = function() {
+                console.log('refreshing');
+                remove_cameras(add_cameras);
+            }
+
+            setInterval(refresh, 60000);
+        });
+    </script>
+</body>
+</html>
